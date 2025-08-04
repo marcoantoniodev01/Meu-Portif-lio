@@ -1,0 +1,769 @@
+@charset "UTF-08";
+
+@media (max-width: 1200px) {
+
+    /*HEADER*/
+
+    .nav__menu {
+        width: 90%;
+    }
+
+    /*INÍCIO*/
+    .home__section {
+        display: flex;
+    }
+
+    .home__image {
+        left: 30%;
+    }
+
+    /*SOBRE MIM*/
+
+    .about__text p {
+        font-size: 1.2rem;
+    }
+
+    .about__contact {
+        width: 12vw;
+        height: 3.5vh;
+        font-size: 1rem;
+    }
+
+    /*PROJETOS*/
+
+    .work__content {
+        display: flex;
+        justify-content: space-between;
+        gap: 3%;
+        width: 90vw;
+    }
+
+    .notebook {
+        width: 55vw;
+        height: 35vh;
+    }
+
+    .btn__projects {
+        width: 12vw;
+        font-size: 0.9rem;
+        height: 3.5vh;
+    }
+
+    /*CONTATO*/
+
+    .contact__content {
+        margin-top: 28%;
+    }
+
+    .contact__form {
+        width: 55vw;
+    }
+}
+
+@media (max-width: 992px) {
+
+    /*MENU HAMBÚRGUER*/
+
+    .show-menu {
+        z-index: 1000;
+    }
+
+    .nav__actions {
+        position: relative;
+        display: flex;
+        gap: 1.1rem;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+        margin-right: 2rem;
+    }
+
+    .nav__toggle,
+    .nav__close {
+        display: inline-flex;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: transform .4s, color .4s;
+    }
+
+    .nav__close {
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .nav__close:hover {
+        transform: rotateZ(-90deg);
+        color: orange;
+    }
+
+    .nav__menu {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 32.3vh;
+
+        display: flex;
+        /* SEMPRE flex */
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2rem;
+
+        background-color: rgba(0, 0, 0, 0.835);
+        box-shadow: 0 12px 24px var(--shadow-color);
+        padding-block: 5rem 4rem;
+
+        opacity: 0;
+        pointer-events: none;
+        /* Bloqueia clique quando fechado */
+        transition: top .4s, opacity .4s;
+    }
+
+    .show-menu.nav__menu {
+        top: 0;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+
+    .nav__list {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav__list li {
+        display: flex;
+        width: 100vw;
+        height: 6vh;
+        border-bottom: 1px solid rgb(97, 63, 0);
+        align-items: center;
+        justify-content: center;
+        transition: background-color .4s;
+    }
+
+    .nav__list li:hover {
+        background-color: rgba(57, 57, 57, 0.341);
+        transform: translateY(0%);
+    }
+
+    .nav__list li:hover a {
+        color: orange;
+    }
+
+    /*MENU HAMBÚRGUER CLARO*/
+
+    .clear-theme .nav__menu {
+        background-color: rgba(255, 255, 255, 0.835);
+    }
+
+    .clear-theme .nav__list li {
+        border-bottom: 1px solid rgb(214, 156, 48);
+    }
+
+    .clear-theme,
+    .nav__list li:hover {
+        background-color: rgba(198, 198, 198, 0.341);
+    }
+
+    /*INÍCIO*/
+
+    .home__image {
+        width: 800px;
+        margin-top: 20vw;
+        left: 35%;
+    }
+
+    .meu__rosto {
+        width: 55vw;
+    }
+
+    .home__button {
+        width: 18vw;
+        height: 3.5vh;
+    }
+
+    /*SOBRE MIM*/
+
+    .about__title {
+        font-size: 2.5rem;
+        top: 10rem;
+    }
+
+    .title__hr {
+        width: 7vw;
+        top: 10rem;
+    }
+
+    .about__title-back {
+        top: 111.5vh;
+        font-size: 7.5rem;
+        color: transparent;
+        transition: -webkit-text-stroke-color .4s;
+    }
+
+    .about__home {
+        width: 99.19vw;
+        height: 60vh;
+        top: 26%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about__rigth {
+        flex-direction: row;
+        width: 100vw;
+        margin-top: 5%;
+    }
+
+    .about__text {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: 60vh;
+    }
+
+    .about__text h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .about__text p {
+        font-size: 1rem;
+    }
+
+    .about__contact {
+        width: 15vw;
+        height: 3.5vh;
+        font-size: 0.9rem;
+        margin-top: 5%;
+    }
+
+    .about__information {
+        margin-left: 3%;
+    }
+
+    .about__information-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .list__information li {
+        font-size: 1rem;
+    }
+
+
+    .about__skills {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        margin-right: 3%;
+    }
+
+    .about__skills-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .about__skills-img {
+        width: 30px;
+    }
+
+    .about__skills-img-figma {
+        width: 22px;
+    }
+
+    .about__skills-img-Flutter {
+        width: 42px;
+    }
+
+    .about__skills-img-Mysql {
+        width: 42px;
+    }
+
+    .about__skills-content {
+        gap: 1.8rem;
+    }
+
+    /*PROJETOS*/
+
+    .projects__title {
+        position: relative;
+        font-size: 2.5rem;
+        text-align: center;
+        top: 10rem;
+        z-index: 999;
+    }
+
+    .title__hr-projects {
+        width: 7vw;
+        top: 10rem;
+    }
+
+    .projects__title-back {
+        top: 232vh;
+        font-size: 7.5rem;
+    }
+
+    .works {
+        margin-top: 30%;
+    }
+
+    .work__content {
+        width: 90vw;
+        height: 60vh;
+    }
+
+    .work__informations h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1%;
+    }
+
+    .work__informations p {
+        font-size: 0.9rem;
+    }
+
+    .notebook {
+        width: 53vw;
+        height: 33vh;
+    }
+
+    .btn__projects {
+        width: 14vw;
+        height: 3vh;
+        font-size: 0.75rem;
+    }
+
+    /*CONTATO*/
+
+    .contact__title {
+        font-size: 2.5rem;
+        top: 10rem;
+    }
+
+    .title__hr-contact {
+        width: 7vw;
+        top: 10rem;
+    }
+
+    .contact__title-back {
+        top: 472vh;
+        font-size: 7.5rem;
+    }
+
+    .contact__content {
+        margin-top: 40%;
+    }
+
+    .contact__form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 50px;
+        width: 70vw;
+    }
+
+    .contact__input {
+        width: 100%;
+        height: 5vh;
+    }
+
+    .contact__message {
+        width: 100%;
+        height: 19rem;
+    }
+
+    .contact__label {
+        margin-left: 2%;
+        margin-top: -2.6%;
+        padding: 7px;
+    }
+
+    .form-button {
+        width: 16vw;
+        font-size: 0.8rem;
+        height: 3.5vh;
+        margin-top: -2%;
+    }
+}
+
+@media (max-width: 750px) {
+
+    /*INÍCIO*/
+
+    .home__image {
+        left: 50%;
+        margin-top: 35%;
+    }
+
+    /*SOBRE MIM*/
+
+    .about__information {
+        margin-top: 0%;
+        left: 3%;
+        width: auto;
+    }
+
+    .list__information li>hr {
+        width: 40vw;
+    }
+
+    .about__skills {
+        width: auto;
+        margin-right: 3%;
+    }
+
+    .about__skills-content {
+        gap: 1.5rem;
+        grid-template-columns: repeat(4, max-content);
+    }
+}
+
+@media (max-width: 650px) {
+
+    /*INÍCIO*/
+
+    .home__section {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .home__image {
+        width: 800px;
+        margin-top: 30%;
+        left: 40%;
+    }
+
+    .home__information {
+        width: 40vw;
+        height: 28vh;
+        top: 40vh;
+        left: 2%;
+    }
+
+    .image {
+        width: 120px;
+    }
+
+    .home__name {
+        font-size: 1.3rem;
+    }
+
+    .home__profession {
+        font-size: 0.8rem;
+    }
+
+    .home__social a {
+        font-size: 1.1rem;
+    }
+
+    .home__button {
+        width: 22vw;
+        height: 3vh;
+        font-size: 0.85rem;
+    }
+
+    .arrow__down {
+        left: 50%;
+        bottom: 2%;
+    }
+
+    .arrow__down img {
+        width: 20px;
+    }
+
+    /*SOBRE MIM*/
+
+    .about__title {
+        font-size: 2rem;
+        top: 10rem;
+    }
+
+    .title__hr {
+        width: 10vw;
+        top: 10rem;
+    }
+
+    .about__title-back {
+        top: 112.3vh;
+        font-size: 6rem;
+    }
+
+    .about__home {
+        width: 100vw;
+        height: 60vh;
+        top: 26%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about__rigth {
+        display: flex;
+        flex-direction: row;
+        margin-top: 10%;
+        width: 100vw;
+
+    }
+
+    .about__text {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 90vw;
+        height: 60vh;
+        align-items: center;
+    }
+
+    .about__text span {
+        color: var(--primary-color);
+    }
+
+    .about__text h2 {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+    }
+
+    .about__text p {
+        font-size: 0.8rem;
+    }
+
+    .about__contact {
+        width: 20vw;
+        height: 3.5vh;
+        font-size: 1rem;
+        margin-top: 5%;
+    }
+
+    .about__information {
+        width: 44vw;
+        margin-left: 4%;
+    }
+
+    .about__information-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .list__information {
+        width: 290px;
+        row-gap: 10px;
+    }
+
+    .list__information li {
+        font-size: 0.8rem;
+    }
+
+    .list__information li>hr {
+        border: 1px solid var(--hr-about);
+        width: 44vw;
+    }
+
+    .about__skills {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        margin-bottom: 0%;
+        margin-right: 4%;
+    }
+
+    .about__skills-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        text-align: left;
+        text-shadow: 0px 1px 3px var(--primary-color);
+    }
+
+    .about__skills-img {
+        width: 25px;
+        transition: transform .4s;
+    }
+
+    .about__skills-img-figma {
+        width: 22px;
+        transition: transform .4s;
+    }
+
+    .about__skills-content {
+        gap: 1.5rem;
+    }
+
+    /*PROJECTS*/
+    
+    .projects {
+        height: 220vh;
+    }
+
+    .projects__title {
+        font-size: 2rem;
+        top: 10rem;
+    }
+
+    .title__hr-projects {
+        width: 10vw;
+        top: 10rem;
+    }
+
+    .projects__title-back {
+        top: 233vh;
+        font-size: 6rem;
+    }
+
+    .works {
+        margin-top: 60%;
+    }
+
+    .work__content {
+        flex-direction: column;
+        width: 90vw;
+        height: 60vh;
+    }
+
+    .work__informations {
+        position: relative;
+        align-items: center;
+        top: -20%;
+    }
+
+    .work__informations h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1%;
+    }
+
+    .work__informations p {
+        font-size: 0.9rem;
+        text-align: justify;
+    }
+
+    .notebook {
+        width: 53vw;
+        height: 20vh;
+    }
+
+    .btn__projects {
+        width: 20vw;
+        height: 3vh;
+        font-size: 0.7rem;
+    }
+
+    /*CONTATO*/
+
+    .contact {
+        height: 100vh;
+    }
+
+    .contact__title {
+        font-size: 2rem;
+        top: 10rem;
+    }
+
+    .title__hr-contact {
+        width: 10vw;
+        top: 10rem;
+    }
+
+    .contact__title-back {
+        top: 453vh;
+        font-size: 6rem;
+    }
+
+    .contact__content {
+        margin-top: 50%;
+    }
+
+    .contact__form {
+        row-gap: 50px;
+        width: 80vw;
+    }
+
+    .contact__input {
+        width: 100%;
+        height: 4.5vh;
+    }
+
+    .contact__message {
+        width: 100%;
+        height: 18.5rem;
+    }
+
+    .contact__label {
+        margin-left: 2%;
+        margin-top: -3.5%;
+        padding: 6px;
+    }
+
+    .form-button {
+        width: 16vw;
+        font-size: 0.8rem;
+        height: 3.5vh;
+        margin-top: -8%;
+    }
+
+    /*FOOTER*/
+
+    .footer {
+        height: 40vh;
+    }
+
+    .footer__box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer__content {
+        position: relative;
+        display: flex;
+        width: 70%;
+        top: -35%;
+        justify-content: space-between;
+    }
+
+    .footer__inf {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        width: 60%;
+    }
+
+    .footer__inf h2 {
+        font-size: 1.5rem;
+    }
+
+    .footer__inf p {
+        text-align: justify;
+        font-size: 0.8rem;
+    }
+
+    .footer__social {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    .footer__social h2 {
+        font-size: 1.5rem;
+    }
+
+    .footer__social-link {
+        text-decoration: none;
+        color: var(--text-color-secondary);
+        font-size: 1.5rem;
+        transition: color .4s;
+    }
+
+}
