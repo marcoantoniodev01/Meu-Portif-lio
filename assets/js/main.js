@@ -34,8 +34,8 @@ const sunIconClass = 'ri-sun-line'     // Ícone sol
 const moonIconClass = 'ri-moon-line'   // Ícone lua
 
 // Caminhos das imagens
-const lightImageSrc = 'assets/img/assinatura.jpg'
-const darkImageSrc = 'assets/img/assinatura-white.png'
+const lightImageSrc = 'https://i.ibb.co/XxVZsNKm/rubrica-branca.png'
+const darkImageSrc = 'https://i.ibb.co/PskDFNmk/rubrica-preta.png'
 
 // Funções auxiliares
 const getCurrentTheme = () => document.body.classList.contains(darkThemeClass) ? 'dark' : 'light'
@@ -162,5 +162,3 @@ document.getElementById('scroll-up').addEventListener('click', (e) => {
   elements.forEach(el => observer.observe(el));
 
   
-
-
