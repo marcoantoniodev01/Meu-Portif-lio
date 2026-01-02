@@ -303,7 +303,7 @@ main {
 }
 
 .image {
-    width: 180px;
+    width: 220px;
 }
 
 .home__title {
@@ -1149,4 +1149,5 @@ header>ul>li>a .clear-theme:hover {
 .clear-theme .footer {
     background-color: orange;
 }
+
 
