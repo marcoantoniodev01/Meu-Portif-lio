@@ -182,7 +182,7 @@ const observer = new IntersectionObserver((entries) => {
   // IMPORTANTE: Definimos dois thresholds (limites).
   // 0: Para detectar quando sai completamente da tela (resetar).
   // 0.15: Para detectar quando já entrou 15% na tela (animar).
-  threshold: [0, 0.15] 
+  threshold: [0.1, 0.2] 
 });
 
 elements.forEach(el => observer.observe(el));
@@ -210,5 +210,6 @@ document.querySelectorAll('.puxar-certo').forEach(link => {
 
 
   
+
 
 
