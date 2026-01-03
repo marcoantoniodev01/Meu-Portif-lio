@@ -161,19 +161,23 @@ document.getElementById('scroll-up').addEventListener('click', (e) => {
 
 /*---------ANIMAÇÕES ELEMENTOS-------------*/
 
-  const elements = document.querySelectorAll('.hidden');
+const elements = document.querySelectorAll('.hidden');
 
-  const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      } else {
-        entry.target.classList.remove('show'); // Remove quando sai da tela
-      }
+        if (entry.isIntersecting) {
+            // Adiciona a classe para mostrar
+            entry.target.classList.add('show');
+            
+            // LINHA IMPORTANTE: Para de observar o elemento depois que ele apareceu.
+            // Isso impede que ele fique sumindo/aparecendo e economiza processamento.
+            observer.unobserve(entry.target); 
+        }
+        // Removemos o 'else' que tirava a classe .show
     });
-  }, { threshold: 0.2 }); // Ativa com 20% visível
+}, { threshold: 0.2 }); // Ativa com 20% visível
 
-  elements.forEach(el => observer.observe(el));
+elements.forEach(el => observer.observe(el));
 
 
   //NAVEGAÇÃO PUXANDO CERTINHO NO MEIO DA SECTION 
@@ -196,5 +200,6 @@ document.querySelectorAll('.puxar-certo').forEach(link => {
     }
   });
 });
+
 
   
