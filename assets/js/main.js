@@ -159,29 +159,33 @@ document.getElementById('scroll-up').addEventListener('click', (e) => {
   });
 });
 
-/*---------ANIMAÇÕES ELEMENTOS-------------*/
+/*---------ANIMAÇÕES ELEMENTOS (CORREÇÃO FLICKER + BIDIRECIONAL) -------------*/
 
 const elements = document.querySelectorAll('.hidden');
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Se entrou na tela, mostra
+    // 1. MOMENTO DE ANIMAR:
+    // Verifica se está intersectando E se já passou de 15% de visibilidade (entry.intersectionRatio > 0.15).
+    // Usamos 0.15 para dar uma margem de segurança para a animação acontecer sem sair da tela.
+    if (entry.isIntersecting && entry.intersectionRatio >= 0.15) {
       entry.target.classList.add('show');
-    } else {
-      // CORREÇÃO DO "SAMBA":
-      // Só removemos a classe se o elemento estiver ABAIXO da tela (boundingClientRect.top > 0).
-      // Isso significa que o usuário rolou para cima e o elemento saiu por baixo.
-      // Se o elemento saiu por CIMA (top < 0), mantemos a classe para evitar o flicker.
-      if (entry.boundingClientRect.top > 0) {
-        entry.target.classList.remove('show');
-      }
+    } 
+    // 2. MOMENTO DE RESETAR:
+    // Só removemos a classe se o elemento parou TOTALMENTE de intersectar (!entry.isIntersecting).
+    // Isso garante que pequenas mudanças de posição durante a animação não removam a classe.
+    else if (!entry.isIntersecting) {
+      entry.target.classList.remove('show');
     }
   });
-}, { threshold: 0.1 }); // Alterei de 0.2 para 0.1 para responder mais rápido
+}, {
+  // IMPORTANTE: Definimos dois thresholds (limites).
+  // 0: Para detectar quando sai completamente da tela (resetar).
+  // 0.15: Para detectar quando já entrou 15% na tela (animar).
+  threshold: [0, 0.15] 
+});
 
 elements.forEach(el => observer.observe(el));
-
 
   //NAVEGAÇÃO PUXANDO CERTINHO NO MEIO DA SECTION 
 
@@ -206,4 +210,5 @@ document.querySelectorAll('.puxar-certo').forEach(link => {
 
 
   
+
 
