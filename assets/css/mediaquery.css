@@ -1166,16 +1166,7 @@ screen and (max-height: 700px) {
 
 @media screen and (max-height: 759px) {
     .contact {
-        height: auto; /* Deixa o conteúdo definir a altura */
-        padding-bottom: 4rem; /* Garante espaço extra antes do footer */
-        min-height: 100vh; /* Opcional: Garante que ocupe pelo menos a tela toda se quiser */
-    }
-}
-
-@media screen and (max-height: 700px) {
-    .contact {
-        height: auto; /* Remove o 130vh que estava causando o problema */
-        padding-bottom: 4rem;
+        height: 100vh; 
     }
 }
 
@@ -1272,4 +1263,5 @@ screen and (max-height: 700px) {
     }
 
 }
+
 
