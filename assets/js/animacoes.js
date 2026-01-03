@@ -1,7 +1,7 @@
 //ONDA DE COR LARANJA TITLE//
 
 const p = document.getElementById("wave-text");
-const interval = 6000; // tempo total de espera entre animações
+const interval = 3500; // tempo total de espera entre animações
 
 function startWave() {
     p.classList.add("active");
@@ -9,7 +9,7 @@ function startWave() {
     // Remover a classe depois que a animação terminar (ajuste o tempo total da animação + delay final)
     setTimeout(() => {
         p.classList.remove("active");
-    }, 5000); // 2s de animação + último delay (13 letras × 0.15s)
+    }, 3000); // 2s de animação + último delay (13 letras × 0.15s)
 }
 
 // Iniciar a primeira onda
@@ -23,7 +23,7 @@ setInterval(() => {
 //BRILHO DE COR LARANJA LINK
 
 const a = document.getElementById("wave-link");
-const intervall = 6000; // intervalo entre animações
+const intervall = 3500; // intervalo entre animações
 
   function startAnimation() {
     a.classList.add("animate");
@@ -31,7 +31,7 @@ const intervall = 6000; // intervalo entre animações
     // remove a classe depois da animação
     setTimeout(() => {
       a.classList.remove("animate");
-    }, 5000); // mesmo tempo da animação
+    }, 3000); // mesmo tempo da animação
   }
 
   startAnimation(); // executa na primeira vez
@@ -44,7 +44,7 @@ const intervall = 6000; // intervalo entre animações
 //BRILHO DE COR LARANJA ABOUT
 
 const span = document.getElementById("wave-about");
-const intervalla = 6000; // intervalo entre animações
+const intervalla = 3500; // intervalo entre animações
 
   function startAnimationabout() {
     span.classList.add("animate-about");
@@ -52,7 +52,7 @@ const intervalla = 6000; // intervalo entre animações
     // remove a classe depois da animação
     setTimeout(() => {
       span.classList.remove("animate-about");
-    }, 5000); // mesmo tempo da animação
+    }, 3000); // mesmo tempo da animação
   }
 
   startAnimationabout(); // executa na primeira vez
@@ -65,7 +65,7 @@ const intervalla = 6000; // intervalo entre animações
   //BRILHO DE COR LARANJA BACKGROUND ABOUT ME
 
 const h1 = document.getElementById("wave-back");
-const intervallb = 6000; // intervalo entre animações
+const intervallb = 3500; // intervalo entre animações
 
   function startAnimationback() {
     h1.classList.add("animate-back");
@@ -73,7 +73,7 @@ const intervallb = 6000; // intervalo entre animações
     // remove a classe depois da animação
     setTimeout(() => {
       h1.classList.remove("animate-back");
-    }, 5000); // mesmo tempo da animação
+    }, 3000); // mesmo tempo da animação
   }
 
   startAnimationback(); // executa na primeira vez

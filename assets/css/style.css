@@ -154,7 +154,7 @@ header {
 }
 
 .bg-header {
-    background-color: rgba(0, 0, 0, 0.641);
+    background-color: rgba(0, 0, 0, 0.541);
     transition: background-color .4s;
 }
 
@@ -211,6 +211,7 @@ header {
 
 .nav__link {
     transition: color .4s;
+    font-size: 1.1rem;
 }
 
 header a,
@@ -244,6 +245,7 @@ header>ul>li>a:hover {
     align-items: center;
     justify-content: center;
     transition: transform .4s;
+    font-size: 1, .1rem
 }
 
 .trocar:hover {
@@ -286,11 +288,12 @@ main {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     padding-top: 4rem;
     overflow: hidden;
     --scroll-opacity: 0;
     background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgb(10, 10, 10) 70%, var(--body-color) 100%);
+    gap: 10rem;
 }
 
 .home__container {
@@ -337,11 +340,19 @@ main {
 .home__information {
     display: flex;
     flex-direction: column;
-    align-items: end;
-    width: auto;
-    padding: 1rem;
-    height: 30vh;
+    align-items: center;
+    min-width: 620px;
+}
+
+.informatio-home-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     justify-content: space-around;
+    width: auto;
+    height: auto;
+    padding: 1rem;
+    gap: 0.5rem;
 }
 
 .image__assinatura {
@@ -350,7 +361,7 @@ main {
 }
 
 .image {
-    width: 250px;
+    width: 280px;
 }
 
 .home__title {
@@ -361,8 +372,8 @@ main {
 
 .home__name {
     text-align: right;
-    width: 250px;
-    font-size: 2rem;
+    width: auto;
+    font-size: 2.5rem;
     color: white;
     transition: color .4s;
 }
@@ -379,16 +390,16 @@ main {
 }
 
 .home__profession {
-    padding: 0.5rem;
-    width: 250px;
+    width: auto;
     text-align: right;
+    font-size: 1.8rem;
 }
 
 .home__links {
     display: flex;
     flex-direction: column;
     align-items: end;
-    row-gap: 2PX;
+    row-gap: 2px;
 }
 
 .home__social a {
@@ -433,7 +444,7 @@ main {
 .home__image {
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: flex-end;
     z-index: 10;
 }
@@ -447,13 +458,18 @@ main {
 
 .arrow__down {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     bottom: 2%;
     z-index: 1000;
-    animation: floatDown 2s ease-in-out infinite;
+    gap: 0.5rem;
 }
 
 .arrow__down img {
     width: 30px;
+    animation: floatDown 2s ease-in-out infinite;
 }
 
 @keyframes floatDown {
@@ -470,66 +486,101 @@ main {
     }
 }
 
+.arrow__down p {
+    color: rgba(255, 255, 255, 0.795);
+    animation: floatopacity 2s ease-in-out infinite;
+}
+
+@keyframes floatopacity {
+    0% {
+        color: rgba(255, 255, 255, 0.137);
+    }
+
+    50% {
+        color: rgba(255, 255, 255, 0.849);
+    }
+
+    100% {
+        color: rgba(255, 255, 255, 0.137);
+    }
+}
+
 /*SOBRE MIM*/
 
 .about__me {
     display: flex;
     flex-direction: column;
     justify-content: baseline;
-    height: 120vh;
+    height: 110vh;
     background-color: rgb(17, 17, 17);
     transition: background-color .4s;
 }
 
-.about__title {
+.section__title-wrapper {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    margin-top: 6rem;
+    margin-bottom: 7rem;
     position: relative;
-    font-size: 3rem;
+}
+
+/* Configuração para AMBOS os títulos ocuparem o mesmo espaço */
+.about__title-back,
+.about__title {
+    grid-area: 1 / 1;
+    /* Mágica: Coloca os dois na linha 1, coluna 1 */
     text-align: center;
-    top: 10rem;
-    z-index: 999;
+    width: 100%;
+}
+
+.about__title {
+    font-size: 3rem;
+    color: var(--text-color-primary);
+    z-index: 1;
+    font-weight: 700;
 }
 
 .title__hr {
     position: relative;
     border: 2px solid var(--primary-color);
     width: 5vw;
-    top: 10rem;
     align-self: center;
 }
 
 .about__title-back {
-    position: absolute;
-    top: 109vh;
-    align-self: center;
     font-size: 10rem;
     color: transparent;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: var(--back-title);
-    transition: -webkit-text-stroke-color .4s;
+    z-index: 0;
+    white-space: nowrap;
+    line-height: 1;
 }
 
 .about__home {
     position: relative;
     display: flex;
     width: 99.19vw;
-    height: 60vh;
-    top: 26%;
+    height: auto;
     justify-content: space-around;
     border-radius: 5px;
+    bottom: 1rem;
 }
 
 .about__text {
     position: relative;
-    width: 31vw;
+    width: 30vw;
     height: 60vh;
 }
 
-.about__text span {
+#wave-about {
     color: var(--primary-color);
+    font-size: 2rem;
 }
 
 .about__text h2 {
-    font-size: 2rem;
+    font-size: 1.4rem;
     margin-bottom: 2rem;
 }
 
@@ -537,6 +588,23 @@ main {
     font-weight: bold;
     font-size: 1.3rem;
     text-align: justify;
+    line-height: 1.8rem;
+}
+
+.segparagrafo {
+    border-left: 4px solid orange;
+    padding: 0rem 0.7rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: justify;
+    line-height: 1.8rem;
+}
+
+.norparagrafo {
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: justify;
+    line-height: 1.8rem;
 }
 
 .about__contact {
@@ -551,7 +619,7 @@ main {
     width: 10vw;
     height: 5vh;
     font-size: 1.2rem;
-    margin-top: 5%;
+    margin-top: 3%;
     transition: background-color .4s;
 }
 
@@ -583,7 +651,7 @@ main {
     display: flex;
     flex-direction: column;
     list-style-type: none;
-    width: 400px;
+    width: 500px;
     row-gap: 10px;
 }
 
@@ -593,7 +661,7 @@ main {
 
 .list__information li>hr {
     border: 1px solid var(--hr-about);
-    width: 330px;
+    width: 380px;
 }
 
 .list__information li>a {
@@ -684,31 +752,11 @@ main {
     justify-content: baseline;
 }
 
-.projects__title {
-    position: relative;
-    font-size: 3rem;
-    text-align: center;
-    top: 10rem;
-    z-index: 999;
-}
-
 .title__hr-projects {
     position: relative;
     border: 2px solid var(--primary-color);
     width: 5vw;
     align-self: center;
-    top: 10rem;
-}
-
-.projects__title-back {
-    position: absolute;
-    top: 229vh;
-    align-self: center;
-    font-size: 10rem;
-    color: transparent;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: var(--back-title);
-    transition: -webkit-text-stroke-color .4s;
 }
 
 .works {
@@ -716,7 +764,6 @@ main {
     display: flex;
     flex-direction: column;
     align-self: center;
-    margin-top: 19%;
     justify-content: center;
 }
 
@@ -813,7 +860,6 @@ main {
     display: flex;
     flex-direction: column;
     align-self: center;
-    margin-top: 15%;
 }
 
 .contact__form {

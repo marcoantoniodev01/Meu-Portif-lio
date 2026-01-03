@@ -27,15 +27,23 @@ window.addEventListener('scroll', bgHeader)
 
 /*=============== TEMA CLARO/ESCURO + TROCA DE IMAGEM ===============*/
 const themeButton = document.getElementById('theme-button')
-const themeImage = document.getElementById('theme-image') // <img id="theme-image">
+const themeImage = document.getElementById('theme-image') // Assinatura
+const myPhoto = document.getElementById('meu-rosto')      // <--- NOVA SELEÇÃO: Sua foto principal
 
-const darkThemeClass = 'clear-theme'   // Classe que ativa o modo escuro
+const darkThemeClass = 'clear-theme'   // Classe que ativa o modo claro (visual)
 const sunIconClass = 'ri-sun-line'     // Ícone sol
 const moonIconClass = 'ri-moon-line'   // Ícone lua
 
-// Caminhos das imagens
-const lightImageSrc = 'https://i.ibb.co/XxVZsNKm/rubrica-branca.png'
-const darkImageSrc = 'https://i.ibb.co/PskDFNmk/rubrica-preta.png'
+// Caminhos das imagens da ASSINATURA
+const lightImageSrc = 'https://i.ibb.co/XxVZsNKm/rubrica-branca.png' // Para fundo escuro
+const darkImageSrc = 'https://i.ibb.co/PskDFNmk/rubrica-preta.png'   // Para fundo claro
+
+// Caminhos das imagens da FOTO PRINCIPAL (TERNO)
+// Modo Escuro (Fundo preto) -> Terno Cinza Claro
+const graySuitSrc = 'https://i.ibb.co/HLGHGPSk/eu.png' 
+
+// Modo Claro (Fundo branco/clear-theme) -> Terno Preto
+const blackSuitSrc = 'https://i.ibb.co/Q7tgGLZN/eu-CINZA.png' 
 
 // Funções auxiliares
 const getCurrentTheme = () => document.body.classList.contains(darkThemeClass) ? 'dark' : 'light'
@@ -45,14 +53,18 @@ const getCurrentIcon = () => themeButton.classList.contains(sunIconClass) ? sunI
 const selectedTheme = localStorage.getItem('selected-theme')
 const selectedIcon = localStorage.getItem('selected-icon')
 
-// Se houver tema salvo, aplica no corpo, no botão e na imagem
+// Se houver tema salvo, aplica no corpo, no botão e nas imagens
 if (selectedTheme) {
   if (selectedTheme === 'dark') {
+    // Se entrou aqui, é porque o usuário salvou o tema "claro" (classe clear-theme ativa)
     document.body.classList.add(darkThemeClass)
-    themeImage.src = darkImageSrc
+    themeImage.src = darkImageSrc  // Assinatura preta
+    myPhoto.src = blackSuitSrc     // Terno preto
   } else {
+    // Tema padrão (escuro)
     document.body.classList.remove(darkThemeClass)
-    themeImage.src = lightImageSrc
+    themeImage.src = lightImageSrc // Assinatura branca
+    myPhoto.src = graySuitSrc      // Terno cinza
   }
 
   // Ajusta o ícone do botão
@@ -65,9 +77,9 @@ if (selectedTheme) {
   }
 }
 
-// Ao clicar no botão, alterna o tema, ícone e imagem
+// Ao clicar no botão, alterna o tema, ícone e as imagens
 themeButton.addEventListener('click', () => {
-  const isDark = document.body.classList.toggle(darkThemeClass)
+  const isActive = document.body.classList.toggle(darkThemeClass)
 
   // Troca ícone
   if (themeButton.classList.contains(sunIconClass)) {
@@ -78,8 +90,10 @@ themeButton.addEventListener('click', () => {
     themeButton.classList.add(sunIconClass)
   }
 
-  // Troca imagem de acordo com o tema
-  themeImage.src = isDark ? darkImageSrc : lightImageSrc
+  // Troca imagens de acordo com o tema
+  // Se isActive for true (tema claro ativado), usa as versões pretas. Se false, versões claras.
+  themeImage.src = isActive ? darkImageSrc : lightImageSrc
+  myPhoto.src = isActive ? blackSuitSrc : graySuitSrc
 
   // Salva escolha
   localStorage.setItem('selected-theme', getCurrentTheme())
@@ -98,7 +112,7 @@ document.querySelectorAll('a.nav__link[href^="#"]').forEach(link => {
 
     if (targetElement) {
       const headerHeight = document.querySelector('header').offsetHeight;
-      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY - 15;
       const offsetPosition = elementPosition - headerHeight;
 
       window.scrollTo({
@@ -160,5 +174,27 @@ document.getElementById('scroll-up').addEventListener('click', (e) => {
   }, { threshold: 0.2 }); // Ativa com 20% visível
 
   elements.forEach(el => observer.observe(el));
+
+
+  //NAVEGAÇÃO PUXANDO CERTINHO NO MEIO DA SECTION 
+
+document.querySelectorAll('.puxar-certo').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const targetID = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetID);
+
+    if (targetElement) {
+      const headerHeight = document.querySelector('header').offsetHeight;
+      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY - 15;
+      const offsetPosition = elementPosition - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+      });
+    }
+  });
+});
 
   
