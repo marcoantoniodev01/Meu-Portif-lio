@@ -1,7 +1,7 @@
 @media (max-width: 992px) {
 
     header {
-        height: 10%;
+        height: 92px;
     }
 
     /*MENU HAMBÚRGUER*/
@@ -1263,5 +1263,6 @@ screen and (max-height: 700px) {
     }
 
 }
+
 
 
