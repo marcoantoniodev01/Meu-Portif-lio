@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div id="loading-spinner" class="loader"></div>
 
     <header class="header hidden fade-down" id="header">
         <nav class="nav__container">
@@ -110,8 +111,8 @@
         <section class="about__me">
 
             <div id="about__me" class="section__title-wrapper">
-                <h2 class="hidden zoom-in about__title-back" >SOBRE MIM</h2>
-                <span class="hidden fade-down about__title" >Sobre mim como desenvolvedor</span>
+                <h2 class="hidden zoom-in about__title-back">SOBRE MIM</h2>
+                <span class="hidden fade-down about__title">Sobre mim como desenvolvedor</span>
                 <hr class="title__hr hidden fade-up">
             </div>
 
@@ -212,9 +213,9 @@
             <div id="projects" class="section__title-wrapper">
                 <h2 class="hidden zoom-in about__title-back">PROJETOS</h2>
                 <span class="hidden fade-down about__title">Meus Projetos</span>
-                  <hr class="title__hr hidden fade-up">
+                <hr class="title__hr hidden fade-up">
             </div>
-          
+
 
             <div class="works">
                 <div class="work__content">
@@ -288,10 +289,10 @@
                 <span class="hidden fade-down about__title">Fale comigo!</span>
                 <hr class="title__hr hidden fade-up">
             </div>
-            
+
 
             <div class="contact__content">
-                <form action="" id="contact-form" class="contact__form">
+                <form action="" id="contact-form" class="contact__form" novalidate>
                     <div class="inputs hidden fade-up">
                         <div class="contact__inf">
                             <input name="user_name" class="contact__input" type="text" id="name" required
@@ -368,9 +369,9 @@
     <script src="assets/js/animacoes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.bundle.min.js"></script>
     <script src="assets/js/particulas.js"></script>
+
+    <div id="toast-container" class="toast-container"></div>
+
 </body>
 
-
-
 </html>
-

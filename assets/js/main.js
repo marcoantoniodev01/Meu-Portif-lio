@@ -65,6 +65,7 @@ if (selectedTheme) {
     document.body.classList.remove(darkThemeClass)
     themeImage.src = lightImageSrc // Assinatura branca
     myPhoto.src = graySuitSrc      // Terno cinza
+
   }
 
   // Ajusta o ícone do botão
@@ -182,7 +183,7 @@ const observer = new IntersectionObserver((entries) => {
   // IMPORTANTE: Definimos dois thresholds (limites).
   // 0: Para detectar quando sai completamente da tela (resetar).
   // 0.15: Para detectar quando já entrou 15% na tela (animar).
-  threshold: [0.1, 0.2] 
+  threshold: [0, 0.2] 
 });
 
 elements.forEach(el => observer.observe(el));
@@ -208,8 +209,55 @@ document.querySelectorAll('.puxar-certo').forEach(link => {
   });
 });
 
+/*=============== SISTEMA DE NOTIFICAÇÃO (TOAST) ===============*/
+function showToast(message, type = 'success') {
+    const container = document.getElementById('toast-container');
+    
+    // Cria o elemento
+    const toast = document.createElement('div');
+    toast.classList.add('toast');
+    if (type === 'error') toast.classList.add('error');
 
-  
+    // Define o ícone baseado no tipo
+    const iconClass = type === 'success' ? 'ri-checkbox-circle-line' : 
+                      type === 'error' ? 'ri-error-warning-line' : 
+                      'ri-information-line';
 
+    toast.innerHTML = `
+        <i class="${iconClass}"></i>
+        <span class="toast-msg">${message}</span>
+    `;
 
+    // Adiciona ao container
+    container.appendChild(toast);
 
+    // Remove automaticamente após 4 segundos (sincronizado com o CSS)
+    setTimeout(() => {
+        toast.style.animation = 'toastFadeOut 0.5s ease forwards';
+        // Remove do DOM após a animação de saída
+        toast.addEventListener('animationend', () => {
+            toast.remove();
+        });
+    }, 4000);
+}
+
+/* =============== ATUALIZAR ALTURA DA HEADER (CSS VARIABLE) =============== */
+function updateHeaderHeight() {
+    const header = document.getElementById('header');
+    if (header) {
+        // Pega a altura exata do header em pixels
+        const height = header.offsetHeight;
+        
+        // Cria uma variável CSS global chamada --header-height
+        document.documentElement.style.setProperty('--header-height', `${height}px`);
+    }
+}
+
+// Executa ao carregar a página
+window.addEventListener('load', updateHeaderHeight);
+
+// Executa sempre que a tela for redimensionada (responsividade)
+window.addEventListener('resize', updateHeaderHeight);
+
+// Executa também ao rolar, caso sua header mude de tamanho no scroll
+window.addEventListener('scroll', updateHeaderHeight);
