@@ -164,18 +164,21 @@ document.getElementById('scroll-up').addEventListener('click', (e) => {
 const elements = document.querySelectorAll('.hidden');
 
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Adiciona a classe para mostrar
-            entry.target.classList.add('show');
-            
-            // LINHA IMPORTANTE: Para de observar o elemento depois que ele apareceu.
-            // Isso impede que ele fique sumindo/aparecendo e economiza processamento.
-            observer.unobserve(entry.target); 
-        }
-        // Removemos o 'else' que tirava a classe .show
-    });
-}, { threshold: 0.2 }); // Ativa com 20% visível
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Se entrou na tela, mostra
+      entry.target.classList.add('show');
+    } else {
+      // CORREÇÃO DO "SAMBA":
+      // Só removemos a classe se o elemento estiver ABAIXO da tela (boundingClientRect.top > 0).
+      // Isso significa que o usuário rolou para cima e o elemento saiu por baixo.
+      // Se o elemento saiu por CIMA (top < 0), mantemos a classe para evitar o flicker.
+      if (entry.boundingClientRect.top > 0) {
+        entry.target.classList.remove('show');
+      }
+    }
+  });
+}, { threshold: 0.1 }); // Alterei de 0.2 para 0.1 para responder mais rápido
 
 elements.forEach(el => observer.observe(el));
 
@@ -203,3 +206,4 @@ document.querySelectorAll('.puxar-certo').forEach(link => {
 
 
   
+
