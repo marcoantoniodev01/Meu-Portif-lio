@@ -261,3 +261,109 @@ window.addEventListener('resize', updateHeaderHeight);
 
 // Executa também ao rolar, caso sua header mude de tamanho no scroll
 window.addEventListener('scroll', updateHeaderHeight);
+
+
+/* Adicionar no main.js */
+document.addEventListener('DOMContentLoaded', () => {
+    const aboutText = document.querySelector('.about__text');
+    
+    const checkScreenSize = () => {
+        if (window.innerWidth <= 1024) {
+            // Se for mobile, remove fade-left e põe zoom-in
+            if (aboutText.classList.contains('fade-left')) {
+                aboutText.classList.remove('fade-left');
+                aboutText.classList.add('zoom-in');
+            }
+        } else {
+            // Se voltar para desktop, restaura fade-left
+            if (aboutText.classList.contains('zoom-in')) {
+                aboutText.classList.remove('zoom-in');
+                aboutText.classList.add('fade-left');
+            }
+        }
+    };
+
+    // Verifica ao carregar
+    checkScreenSize();
+    
+    // Verifica se o usuário redimensionar a tela
+    window.addEventListener('resize', checkScreenSize);
+});
+
+/* =============== TROCA ANIMAÇÃO BOTÕES PROJETOS (Via JS) =============== */
+function updateProjectButtonAnimation() {
+    // Define o limite (1200px conforme seu mediaquery.css)
+    const isMobile = window.innerWidth <= 1200;
+    
+    // Seleciona todos os botões de projeto
+    const buttons = document.querySelectorAll('.btn__projects');
+
+    buttons.forEach(button => {
+        // Pega a DIV pai que tem as classes .hidden e .fade-right
+        const container = button.parentElement;
+
+        if (isMobile) {
+            // MODO MOBILE: Se tiver fade-right, troca para zoom-in
+            if (container.classList.contains('fade-right')) {
+                container.classList.remove('fade-right');
+                container.classList.add('zoom-in');
+            }
+        } else {
+            // MODO DESKTOP: Se tiver zoom-in, volta para fade-right
+            if (container.classList.contains('zoom-in')) {
+                container.classList.remove('zoom-in');
+                container.classList.add('fade-right');
+            }
+        }
+    });
+}
+
+// Executa assim que a página carrega
+window.addEventListener('load', updateProjectButtonAnimation);
+
+// Executa sempre que redimensionar a janela
+window.addEventListener('resize', updateProjectButtonAnimation);
+
+/* =============== WORK TOGGLE (Lógica Genérica) =============== */
+const workToggles = document.querySelectorAll('.work__toggle');
+
+workToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        
+        // 1. Alterna a classe visual (o CSS move o fundo laranja)
+        toggle.classList.toggle('active-mobile');
+        
+        // 2. Alterna as cores dos ícones (Computador vs Celular)
+        const options = toggle.querySelectorAll('.work__option');
+        options.forEach(opt => opt.classList.toggle('active'));
+
+        // 3. LÓGICA DA TROCA DE IMAGEM
+        // Correção aqui: Buscamos '.work__content' (conforme seu HTML) em vez de '.projects__content'
+        const workContent = toggle.closest('.work__content'); 
+        const projectImg = workContent.querySelector('.notebook');
+        
+        // Verifica se ativou o modo mobile
+        const isMobile = toggle.classList.contains('active-mobile');
+        
+        // Pega os links salvos no HTML (data-pc e data-mobile)
+        const pcSrc = projectImg.getAttribute('data-pc');
+        const mobileSrc = projectImg.getAttribute('data-mobile');
+
+        // Adiciona transição suave via JS para garantir o efeito
+        projectImg.style.transition = 'opacity 0.2s ease';
+        projectImg.style.opacity = '0'; // Oculta a imagem
+        
+        // Aguarda 200ms (tempo do fade out) para trocar a fonte
+        setTimeout(() => {
+            if (isMobile && mobileSrc) {
+                // Se ativou mobile, põe a imagem de celular
+                projectImg.src = mobileSrc;
+            } else {
+                // Se desativou (voltou pro pc), põe a imagem de pc
+                projectImg.src = pcSrc;
+            }
+            // Mostra a imagem novamente
+            projectImg.style.opacity = '1';
+        }, 200);
+    });
+});

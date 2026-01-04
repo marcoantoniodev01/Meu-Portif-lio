@@ -409,6 +409,7 @@ screen and (max-height: 700px) {
 }
 
 @media screen and (max-width: 1024px) {
+    
 
     .section__title-wrapper {
         margin-top: 4rem;
