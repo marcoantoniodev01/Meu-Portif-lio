@@ -77,7 +77,8 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    -webkit-tap-highlight-color: transparent; /* Adicione esta linha */
+    -webkit-tap-highlight-color: transparent;
+    /* Adicione esta linha */
 }
 
 html {
@@ -790,6 +791,77 @@ main {
     margin-bottom: 5%;
 }
 
+/* BOTÃO TOGGLE */
+.work__toggle {
+    position: relative;
+    display: flex;
+    width: 140px;
+    height: 40px;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    user-select: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all .4s;
+}
+
+.work__toggle:hover {
+    background-color: rgb(28, 28, 28);
+}
+
+.work__toggle:hover .work__toggle-bg {
+    border-color: rgb(28, 28, 28);
+}
+
+/* Fundo Laranja Deslizante */
+.work__toggle-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    /* EXATAMENTE metade do pai */
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 7px;
+    /* Levemente menor que o pai para encaixe visual */
+    border: 5px solid rgb(17, 17, 17);
+    z-index: 1;
+    /* Fica atrás do texto */
+    transition: all .4s;
+
+}
+
+/* Textos (PC / Celular) */
+.work__option {
+    position: relative;
+    z-index: 2;
+    /* Fica na frente do fundo laranja */
+    flex: 1;
+    /* Cada opção ocupa exatamente metade do espaço disponível */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--small-font-size);
+    font-weight: 600;
+    color: white;
+    /* Cor padrão (preto/cinza) */
+    transition: color 0.35s;
+    font-size: 1.3rem;
+}
+
+/* Quando a opção está ativa (texto fica branco para contraste) */
+.work__option.active {
+    color: white;
+    /* Texto sobre o laranja */
+}
+
+.work__toggle.active-mobile .work__toggle-bg {
+    transform: translateX(100%);
+}
+
 .work__informations p {
     font-size: 1.3rem;
     color: rgb(196, 196, 196);
@@ -1096,13 +1168,13 @@ input:-webkit-autofill {
 
 .toast-container {
     position: fixed;
-    top: calc(var(--header-height) + 1rem); 
+    top: calc(var(--header-height) + 1rem);
     right: 2rem;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    --header-height: 90px; 
+    --header-height: 90px;
 }
 
 .toast {
@@ -1189,13 +1261,13 @@ input:-webkit-autofill {
 
 .loader {
     position: fixed;
-    top: calc(var(--header-height) + 1rem); 
+    top: calc(var(--header-height) + 1rem);
     left: 0;
     left: 1.5rem;
     width: 40px;
     height: 40px;
-    border: 4px solid rgba(255, 165, 0, 0.2); 
-    border-left-color: var(--primary-color); 
+    border: 4px solid rgba(255, 165, 0, 0.2);
+    border-left-color: var(--primary-color);
     border-radius: 50%;
     z-index: 10000;
     animation: spin 1s linear infinite;
@@ -1408,63 +1480,4 @@ header>ul>li>a .clear-theme:hover {
 .clear-theme .footer {
     background-color: orange;
 
-}
-
-
-
-
-
-/* =============== BOTÃO TOGGLE (CLEAN & RESPONSIVO) =============== */
-.work__toggle {
-    position: relative;
-    display: flex; /* Garante alinhamento lado a lado */
-    width: 140px;  /* Tamanho padrão (pode mudar no mediaquery que não quebra) */
-    height: 40px;
-    background-color: transparent;
-    border: 1px solid var(--primary-color); /* Borda laranja */
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 1.5rem;
-    overflow: hidden; /* Mantém o fundo laranja dentro das bordas redondas */
-    user-select: none; /* Evita selecionar o texto ao clicar rápido */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Fundo Laranja Deslizante */
-.work__toggle-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%; /* EXATAMENTE metade do pai */
-    height: 100%;
-    background-color: var(--primary-color);
-    border-radius: 7px; /* Levemente menor que o pai para encaixe visual */
-    border: 5px solid rgb(17, 17, 17);
-    z-index: 1; /* Fica atrás do texto */
-    transition: transform 0.35s cubic-bezier(0.45, 0.05, 0.55, 0.95);
-    
-}
-
-/* Textos (PC / Celular) */
-.work__option {
-    position: relative;
-    z-index: 2; /* Fica na frente do fundo laranja */
-    flex: 1;    /* Cada opção ocupa exatamente metade do espaço disponível */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--small-font-size);
-    font-weight: 600;
-    color: white; /* Cor padrão (preto/cinza) */
-    transition: color 0.35s;
-    font-size: 1.3rem;
-}
-
-/* Quando a opção está ativa (texto fica branco para contraste) */
-.work__option.active {
-    color: white; /* Texto sobre o laranja */
-}
-
-.work__toggle.active-mobile .work__toggle-bg {
-    transform: translateX(100%);
 }

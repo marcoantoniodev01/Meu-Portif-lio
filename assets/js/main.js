@@ -367,3 +367,47 @@ workToggles.forEach(toggle => {
         }, 200);
     });
 });
+
+/* =============== PRELOAD DE IMAGENS (CACHE) =============== */
+/* Carrega imagens secundárias em segundo plano para evitar delay na troca */
+
+function preloadAllImages() {
+    // 1. Defina aqui as imagens do TEMA (Assinaturas e Fotos de Perfil)
+    const staticImages = [
+        'https://i.ibb.co/XxVZsNKm/rubrica-branca.png', // Assinatura Dark Mode
+        'https://i.ibb.co/PskDFNmk/rubrica-preta.png',   // Assinatura Light Mode
+        'https://i.ibb.co/HLGHGPSk/eu.png',               // Foto Terno Cinza
+        'https://i.ibb.co/Q7tgGLZN/eu-CINZA.png'         // Foto Terno Preto
+    ];
+
+    // Loop para carregar as estáticas
+    staticImages.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+
+    // 2. Busca automática das imagens dos PROJETOS (PC e Mobile)
+    const projectImages = document.querySelectorAll('.notebook');
+
+    projectImages.forEach(element => {
+        const pcSrc = element.getAttribute('data-pc');
+        const mobileSrc = element.getAttribute('data-mobile');
+
+        // Preload da versão PC
+        if (pcSrc) {
+            const imgPC = new Image();
+            imgPC.src = pcSrc;
+        }
+
+        // Preload da versão Mobile
+        if (mobileSrc) {
+            const imgMobile = new Image();
+            imgMobile.src = mobileSrc;
+        }
+    });
+
+    console.log('Todas as imagens secundárias foram pré-carregadas no cache.');
+}
+
+// Executa o preload assim que o site terminar de carregar o essencial
+window.addEventListener('load', preloadAllImages);
