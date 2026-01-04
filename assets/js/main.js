@@ -429,3 +429,64 @@ function preloadAllImages() {
 // Executa o preload assim que o site terminar de carregar o essencial
 
 window.addEventListener('load', preloadAllImages);
+
+/* ==========================================================================
+   CORREÇÃO DEFINITIVA DE STICKY HOVER (HIERARQUIA COMPLETA)
+   Remove o estado :hover e :focus de todos os elementos pais interativos
+   após 400ms do toque.
+   ========================================================================== */
+
+document.addEventListener('touchend', function (event) {
+    // 1. Inicia a contagem de 400ms (tempo que o hover fica ativo)
+    setTimeout(() => {
+        let element = event.target;
+        let depth = 0; // Contador de segurança para não travar o browser
+
+        // 2. Loop: Sobe 5 níveis na árvore do HTML a partir do toque
+        // Isso garante que pegamos o ícone, o link (<a>) E o item da lista (<li>)
+        while (element && element !== document.body && depth < 5) {
+            
+            // Verifica se o elemento atual é algo que pode ter hover/interação
+            // Adicionei verificação de classes específicas do seu projeto também
+            const isInteractive = 
+                element.tagName === 'A' || 
+                element.tagName === 'BUTTON' || 
+                element.tagName === 'LI' || 
+                element.tagName === 'INPUT' ||
+                element.classList.contains('work__toggle') ||
+                element.classList.contains('nav__close') ||
+                element.classList.contains('nav__toggle');
+
+            if (isInteractive) {
+                // A. Remove o foco (Essencial para inputs e links no mobile)
+                if (typeof element.blur === 'function') {
+                    element.blur();
+                }
+
+                // B. O Truque do Pointer-Events (Desliga o mouse virtual)
+                // Usamos uma IIFE (função imediata) para capturar a variável 'element' corretamente no loop
+                (function(el) {
+                    const originalPointerEvents = el.style.pointerEvents;
+                    
+                    // Desativa a detecção de mouse temporariamente
+                    el.style.pointerEvents = 'none';
+                    
+                    // Força o navegador a repintar o elemento (Reflow)
+                    void el.offsetHeight; 
+                    
+                    // Restaura a interatividade rapidamente (50ms)
+                    // Rápido o suficiente para o usuário não notar, 
+                    // mas lento o suficiente para o navegador limpar o hover.
+                    setTimeout(() => {
+                        el.style.pointerEvents = originalPointerEvents || '';
+                    }, 50);
+                })(element);
+            }
+
+            // Sobe para o pai para a próxima iteração do loop
+            element = element.parentElement;
+            depth++;
+        }
+    }, 400); // <-- Tempo de espera solicitado (0.4s)
+}, { passive: true }); // Otimização para rolagem de tela
+
