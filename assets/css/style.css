@@ -816,6 +816,27 @@ main {
     border-color: rgb(28, 28, 28);
 }
 
+.clear-theme .work__toggle-bg {
+    border-color: rgb(238, 238, 238);
+}
+
+.clear-theme .work__toggle:hover {
+    background-color: rgb(227, 227, 227);
+}
+
+.clear-theme .work__toggle:hover .work__toggle-bg {
+    border-color: rgb(227, 227, 227);
+}
+
+.clear-theme .work__option {
+    color: rgb(17, 17, 17);
+}
+
+.clear-theme .work__option.active {
+    color: rgb(238, 238, 238);
+    /* Texto sobre o laranja */
+}
+
 /* Fundo Laranja Deslizante */
 .work__toggle-bg {
     position: absolute;
@@ -846,7 +867,7 @@ main {
     justify-content: center;
     font-size: var(--small-font-size);
     font-weight: 600;
-    color: white;
+    color: rgb(238, 238, 238);
     /* Cor padrão (preto/cinza) */
     transition: color 0.35s;
     font-size: 1.3rem;
@@ -854,7 +875,7 @@ main {
 
 /* Quando a opção está ativa (texto fica branco para contraste) */
 .work__option.active {
-    color: white;
+    color: rgb(17, 17, 17);
     /* Texto sobre o laranja */
 }
 

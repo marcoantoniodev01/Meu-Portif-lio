@@ -324,63 +324,46 @@ window.addEventListener('load', updateProjectButtonAnimation);
 // Executa sempre que redimensionar a janela
 window.addEventListener('resize', updateProjectButtonAnimation);
 
-/* =============== WORK TOGGLE (CORRIGIDO PARA MOBILE) =============== */
+/* =============== WORK TOGGLE (Lógica Genérica) =============== */
 const workToggles = document.querySelectorAll('.work__toggle');
 
 workToggles.forEach(toggle => {
-    // Variável de controle para impedir cliques duplos rápidos (Trava)
-    let isAnimating = false;
-
-    toggle.addEventListener('click', (e) => {
-        // 1. Previne comportamentos padrão do toque no mobile
-        e.preventDefault();
-
-        // 2. Se já estiver animando, ignora o clique (Isso mata o Ghost Click)
-        if (isAnimating) return;
-        isAnimating = true;
-
-        // --- Início da Lógica Visual ---
+    toggle.addEventListener('click', () => {
         
+        // 1. Alterna a classe visual (o CSS move o fundo laranja)
         toggle.classList.toggle('active-mobile');
         
+        // 2. Alterna as cores dos ícones (Computador vs Celular)
         const options = toggle.querySelectorAll('.work__option');
         options.forEach(opt => opt.classList.toggle('active'));
 
+        // 3. LÓGICA DA TROCA DE IMAGEM
+        // Correção aqui: Buscamos '.work__content' (conforme seu HTML) em vez de '.projects__content'
         const workContent = toggle.closest('.work__content'); 
         const projectImg = workContent.querySelector('.notebook');
         
+        // Verifica se ativou o modo mobile
         const isMobile = toggle.classList.contains('active-mobile');
+        
+        // Pega os links salvos no HTML (data-pc e data-mobile)
         const pcSrc = projectImg.getAttribute('data-pc');
         const mobileSrc = projectImg.getAttribute('data-mobile');
 
-        // Adiciona transição
+        // Adiciona transição suave via JS para garantir o efeito
         projectImg.style.transition = 'opacity 0.2s ease';
+        projectImg.style.opacity = '0'; // Oculta a imagem
         
-        // 3. Oculta a imagem
-        projectImg.style.opacity = '0';
-        
-        // 4. Aguarda o tempo da transição (200ms)
+        // Aguarda 200ms (tempo do fade out) para trocar a fonte
         setTimeout(() => {
-            // Troca o SRC
-            const newSrc = (isMobile && mobileSrc) ? mobileSrc : pcSrc;
-            projectImg.src = newSrc;
-            
-            // 5. O SEGREDO: Só mostra a imagem quando o navegador confirmar que ela carregou
-            // Isso evita piscar a imagem antiga enquanto a nova processa
-            projectImg.onload = () => {
-                projectImg.style.opacity = '1';
-                isAnimating = false; // Destrava para o próximo clique
-            };
-
-            // (Segurança) Caso a imagem já esteja em cache e o onload não dispare
-            // Forçamos a aparição e o destravamento após um breve delay extra
-            setTimeout(() => {
-                if (projectImg.style.opacity === '0') {
-                    projectImg.style.opacity = '1';
-                    isAnimating = false;
-                }
-            }, 50);
-
+            if (isMobile && mobileSrc) {
+                // Se ativou mobile, põe a imagem de celular
+                projectImg.src = mobileSrc;
+            } else {
+                // Se desativou (voltou pro pc), põe a imagem de pc
+                projectImg.src = pcSrc;
+            }
+            // Mostra a imagem novamente
+            projectImg.style.opacity = '1';
         }, 200);
     });
 });
@@ -427,66 +410,4 @@ function preloadAllImages() {
 }
 
 // Executa o preload assim que o site terminar de carregar o essencial
-
 window.addEventListener('load', preloadAllImages);
-
-/* ==========================================================================
-   CORREÇÃO DEFINITIVA DE STICKY HOVER (HIERARQUIA COMPLETA)
-   Remove o estado :hover e :focus de todos os elementos pais interativos
-   após 400ms do toque.
-   ========================================================================== */
-
-document.addEventListener('touchend', function (event) {
-    // 1. Inicia a contagem de 400ms (tempo que o hover fica ativo)
-    setTimeout(() => {
-        let element = event.target;
-        let depth = 0; // Contador de segurança para não travar o browser
-
-        // 2. Loop: Sobe 5 níveis na árvore do HTML a partir do toque
-        // Isso garante que pegamos o ícone, o link (<a>) E o item da lista (<li>)
-        while (element && element !== document.body && depth < 5) {
-            
-            // Verifica se o elemento atual é algo que pode ter hover/interação
-            // Adicionei verificação de classes específicas do seu projeto também
-            const isInteractive = 
-                element.tagName === 'A' || 
-                element.tagName === 'BUTTON' || 
-                element.tagName === 'LI' || 
-                element.tagName === 'INPUT' ||
-                element.classList.contains('work__toggle') ||
-                element.classList.contains('nav__close') ||
-                element.classList.contains('nav__toggle');
-
-            if (isInteractive) {
-                // A. Remove o foco (Essencial para inputs e links no mobile)
-                if (typeof element.blur === 'function') {
-                    element.blur();
-                }
-
-                // B. O Truque do Pointer-Events (Desliga o mouse virtual)
-                // Usamos uma IIFE (função imediata) para capturar a variável 'element' corretamente no loop
-                (function(el) {
-                    const originalPointerEvents = el.style.pointerEvents;
-                    
-                    // Desativa a detecção de mouse temporariamente
-                    el.style.pointerEvents = 'none';
-                    
-                    // Força o navegador a repintar o elemento (Reflow)
-                    void el.offsetHeight; 
-                    
-                    // Restaura a interatividade rapidamente (50ms)
-                    // Rápido o suficiente para o usuário não notar, 
-                    // mas lento o suficiente para o navegador limpar o hover.
-                    setTimeout(() => {
-                        el.style.pointerEvents = originalPointerEvents || '';
-                    }, 50);
-                })(element);
-            }
-
-            // Sobe para o pai para a próxima iteração do loop
-            element = element.parentElement;
-            depth++;
-        }
-    }, 400); // <-- Tempo de espera solicitado (0.4s)
-}, { passive: true }); // Otimização para rolagem de tela
-
