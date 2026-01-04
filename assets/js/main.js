@@ -324,46 +324,63 @@ window.addEventListener('load', updateProjectButtonAnimation);
 // Executa sempre que redimensionar a janela
 window.addEventListener('resize', updateProjectButtonAnimation);
 
-/* =============== WORK TOGGLE (Lógica Genérica) =============== */
+/* =============== WORK TOGGLE (CORRIGIDO PARA MOBILE) =============== */
 const workToggles = document.querySelectorAll('.work__toggle');
 
 workToggles.forEach(toggle => {
-    toggle.addEventListener('click', () => {
+    // Variável de controle para impedir cliques duplos rápidos (Trava)
+    let isAnimating = false;
+
+    toggle.addEventListener('click', (e) => {
+        // 1. Previne comportamentos padrão do toque no mobile
+        e.preventDefault();
+
+        // 2. Se já estiver animando, ignora o clique (Isso mata o Ghost Click)
+        if (isAnimating) return;
+        isAnimating = true;
+
+        // --- Início da Lógica Visual ---
         
-        // 1. Alterna a classe visual (o CSS move o fundo laranja)
         toggle.classList.toggle('active-mobile');
         
-        // 2. Alterna as cores dos ícones (Computador vs Celular)
         const options = toggle.querySelectorAll('.work__option');
         options.forEach(opt => opt.classList.toggle('active'));
 
-        // 3. LÓGICA DA TROCA DE IMAGEM
-        // Correção aqui: Buscamos '.work__content' (conforme seu HTML) em vez de '.projects__content'
         const workContent = toggle.closest('.work__content'); 
         const projectImg = workContent.querySelector('.notebook');
         
-        // Verifica se ativou o modo mobile
         const isMobile = toggle.classList.contains('active-mobile');
-        
-        // Pega os links salvos no HTML (data-pc e data-mobile)
         const pcSrc = projectImg.getAttribute('data-pc');
         const mobileSrc = projectImg.getAttribute('data-mobile');
 
-        // Adiciona transição suave via JS para garantir o efeito
+        // Adiciona transição
         projectImg.style.transition = 'opacity 0.2s ease';
-        projectImg.style.opacity = '0'; // Oculta a imagem
         
-        // Aguarda 200ms (tempo do fade out) para trocar a fonte
+        // 3. Oculta a imagem
+        projectImg.style.opacity = '0';
+        
+        // 4. Aguarda o tempo da transição (200ms)
         setTimeout(() => {
-            if (isMobile && mobileSrc) {
-                // Se ativou mobile, põe a imagem de celular
-                projectImg.src = mobileSrc;
-            } else {
-                // Se desativou (voltou pro pc), põe a imagem de pc
-                projectImg.src = pcSrc;
-            }
-            // Mostra a imagem novamente
-            projectImg.style.opacity = '1';
+            // Troca o SRC
+            const newSrc = (isMobile && mobileSrc) ? mobileSrc : pcSrc;
+            projectImg.src = newSrc;
+            
+            // 5. O SEGREDO: Só mostra a imagem quando o navegador confirmar que ela carregou
+            // Isso evita piscar a imagem antiga enquanto a nova processa
+            projectImg.onload = () => {
+                projectImg.style.opacity = '1';
+                isAnimating = false; // Destrava para o próximo clique
+            };
+
+            // (Segurança) Caso a imagem já esteja em cache e o onload não dispare
+            // Forçamos a aparição e o destravamento após um breve delay extra
+            setTimeout(() => {
+                if (projectImg.style.opacity === '0') {
+                    projectImg.style.opacity = '1';
+                    isAnimating = false;
+                }
+            }, 50);
+
         }, 200);
     });
 });
@@ -410,4 +427,5 @@ function preloadAllImages() {
 }
 
 // Executa o preload assim que o site terminar de carregar o essencial
+
 window.addEventListener('load', preloadAllImages);
