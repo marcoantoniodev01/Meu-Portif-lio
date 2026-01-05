@@ -67,46 +67,19 @@
     </header>
 
     <section class="project-i">
-
-
         <div class="project-content">
             <div class="proj-cont-left">
-
                 <div class="proj-left-imgs">
                     <div id="main-slider" class="splide hidden fade-down">
                         <div class="splide__track">
-                            <ul class="splide__list">
-                                <li class="splide__slide">
-                                    <img src="https://i.ibb.co/5hPngYby/imagem-2026-01-04-150949355.png"
-                                        alt="imagem 1 do projeto">
-                                </li>
-                                <li class="splide__slide">
-                                    <img src="https://i.ibb.co/fGdT58mr/Captura-de-tela-2026-01-04-165315.png"
-                                        alt="imagem 2 do projeto">
-                                </li>
-                                <li class="splide__slide">
-                                    <iframe allow="fullscreen" allowfullscreen height="720"
-                                        src="https://res.cloudinary.com/dasht60kb/video/upload/v1767561783/Marco_Ant%C3%B4nio_-_Opera_2026-01-03_23-00-00_du9jyw.mp4"
-                                        width="1280" style="border:none;"></iframe>
-                                </li>
+                            <ul class="splide__list" id="main-slider-list">
                             </ul>
                         </div>
                     </div>
 
                     <div id="thumbnail-slider" class="splide hidden fade-up">
                         <div class="splide__track">
-                            <ul class="splide__list">
-                                <li class="splide__slide">
-                                    <img src="https://i.ibb.co/5hPngYby/imagem-2026-01-04-150949355.png" alt="">
-                                </li>
-                                <li class="splide__slide">
-                                    <img src="https://i.ibb.co/fGdT58mr/Captura-de-tela-2026-01-04-165315.png" alt="">
-                                </li>
-                                <li class="splide__slide">
-                                    <iframe allow="fullscreen" allowfullscreen height="720"
-                                        src="https://res.cloudinary.com/dasht60kb/video/upload/v1767561783/Marco_Ant%C3%B4nio_-_Opera_2026-01-03_23-00-00_du9jyw.mp4"
-                                        width="1280" style="border:none;"></iframe>
-                                </li>
+                            <ul class="splide__list" id="thumb-slider-list">
                             </ul>
                         </div>
                     </div>
@@ -116,47 +89,26 @@
             <div class="proj-cont-right">
                 <div class="proj-right-head">
                     <div class="proj-right-title hidden zoom-in">
-                        <h3>Top Style - Descrição</h3>
+                        <h3 id="project-title">Carregando...</h3>
                     </div>
 
                     <div class="proj-right-tec">
                         <div class="right-tec-title hidden fade-down">
                             <h4>Tecnologias Usadas:</h4>
                         </div>
-
-                        <div class="right-tec-img hidden zoom-in">
-                            <img src="https://i.ibb.co/qYxzvKw8/html.png" alt="image" class="about__skills-img"
-                                title="Html 5">
-                            <img src="https://i.ibb.co/B5XVTXVL/css.png" alt="image" class="about__skills-img"
-                                title="Css">
-                            <img src="https://i.ibb.co/sh3bncK/javascript.jpg" alt="image" class="about__skills-img"
-                                title="JavaScript">
-                            <img src="https://i.ibb.co/7dX7QzRH/SQL.png" alt="image" class="about__skills-img"
-                                title="SQL">
-                            <img src="https://i.ibb.co/4nDz6N5k/github-white-icon.webp" alt="image"
-                                class="about__skills-img" title="Github">
-                            <img src="https://i.ibb.co/35C9YVtR/imagem-2026-01-04-193406153.png" alt="image"
-                                class="about__skills-img" title="Git">
-                            <img src="https://i.ibb.co/r2mVTxcy/figma.png" alt="image" class="about__skills-img-figma"
-                                title="Figma">
+                        <div class="right-tec-img hidden zoom-in" id="tech-container">
                         </div>
                     </div>
                 </div>
 
                 <div class="proj-right-description hidden fade-right">
-                    <p>O projeto TopStyle é uma plataforma digital de moda streetwear criada
-                            para reforçar a identidade urbana da marca e melhorar a conexão com o público por meio de
-                            uma experiência online moderna. Atuei no desenvolvimento front-end, na implementação das
-                            interações, na estrutura digital e na criação das interfaces, utilizando HTML, CSS,
-                            JavaScript, Banco de dados e Figma para transformar o conceito da marca em uma solução
-                            funcional e
-                            alinhada à sua proposta visual.
-                    </p>
+                    <p id="project-desc"></p>
                 </div>
 
                 <div class="proj-right-view-page hidden zoom-in">
-                    <a class="view-page" href="https://topstyle.vercel.app" target="_blank">Acessar site <i
-                            class="ri-arrow-right-up-box-line"></i></a>
+                    <a class="view-page" id="project-link" href="#" target="_blank">
+                        Acessar site <i class="ri-arrow-right-up-box-line"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -202,6 +154,8 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/projects.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="assets/js/swipper.js"></script>
     <script src="assets/js/main.js"></script>

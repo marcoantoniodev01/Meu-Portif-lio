@@ -1119,6 +1119,7 @@ input:-webkit-autofill {
     justify-content: center;
     transition: background-color .4s;
     overflow: hidden;
+    z-index: 1000;
 }
 
 .footer__box {
@@ -1322,6 +1323,7 @@ input:-webkit-autofill {
 .project-i {
     width: 100%;
     height: auto;
+    min-height: 80vh;
     padding-top: 9rem;
     display: flex;
     flex-direction: column;
