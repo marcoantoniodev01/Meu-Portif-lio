@@ -1382,6 +1382,26 @@ screen and (max-height: 700px) {
     .proj-cont-right {
         width: 85%;
     }
+
+    .proj-right-description {
+        font-size: 1rem;
+    }
+
+    .right-tec-img img {
+        width: 30px;
+    }
+
+    .right-tec-img .about__skills-img-figma {
+        width: 23px;
+    }
+
+    .proj-right-title h3 {
+        font-size: 2rem;
+    }
+
+    .right-tec-title {
+        font-size: 1.3rem;
+    }
 }
 
 @media screen and (max-width: 576px) {
