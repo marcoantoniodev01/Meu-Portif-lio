@@ -419,3 +419,33 @@ function preloadAllImages() {
 
 // Executa o preload assim que o site terminar de carregar o essencial
 window.addEventListener('load', preloadAllImages);
+
+(function () {
+  const isTouchDevice =
+    window.matchMedia('(hover: none)').matches ||
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0;
+
+  if (!isTouchDevice) return;
+
+  let lastTouchedElement = null;
+  let hoverTimeout = null;
+
+  document.addEventListener('touchstart', (e) => {
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+
+    // elemento tocado
+    lastTouchedElement = e.target;
+
+    hoverTimeout = setTimeout(() => {
+      // força saída do estado hover
+      if (lastTouchedElement && lastTouchedElement.blur) {
+        lastTouchedElement.blur();
+      }
+
+      // fallback para qualquer elemento
+      document.activeElement?.blur();
+      lastTouchedElement = null;
+    }, 400); // tempo do hover
+  }, { passive: true });
+})();
