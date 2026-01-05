@@ -420,32 +420,26 @@ function preloadAllImages() {
 // Executa o preload assim que o site terminar de carregar o essencial
 window.addEventListener('load', preloadAllImages);
 
-(function () {
-  const isTouchDevice =
-    window.matchMedia('(hover: none)').matches ||
-    'ontouchstart' in window ||
-    navigator.maxTouchPoints > 0;
+/* =============== FIX DEFINITIVO: ANIMAÇÃO DE TOQUE MOBILE =============== */
+document.addEventListener('DOMContentLoaded', () => {
+    // Verifica se é dispositivo touch
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-  if (!isTouchDevice) return;
+    if (isTouch) {
+        // Seleciona todos os elementos que devem ter o efeito
+        // Adicione aqui qualquer classe que precise do efeito
+        const elements = document.querySelectorAll('.trocar, .nav__actions i, .home__button, a.nav__link, .work__toggle');
 
-  let lastTouchedElement = null;
-  let hoverTimeout = null;
+        elements.forEach(el => {
+            el.addEventListener('click', function(e) {
+                // Adiciona a classe que definimos no CSS
+                this.classList.add('active-effect');
 
-  document.addEventListener('touchstart', (e) => {
-    if (hoverTimeout) clearTimeout(hoverTimeout);
-
-    // elemento tocado
-    lastTouchedElement = e.target;
-
-    hoverTimeout = setTimeout(() => {
-      // força saída do estado hover
-      if (lastTouchedElement && lastTouchedElement.blur) {
-        lastTouchedElement.blur();
-      }
-
-      // fallback para qualquer elemento
-      document.activeElement?.blur();
-      lastTouchedElement = null;
-    }, 400); // tempo do hover
-  }, { passive: true });
-})();
+                // Remove depois de 400ms (0.4s)
+                setTimeout(() => {
+                    this.classList.remove('active-effect');
+                }, 400);
+            });
+        });
+    }
+});

@@ -106,7 +106,13 @@ body {
     background: var(--scroll-bar-thumb);
 }
 
-::-webkit-scrollbar-thumb:hover {
+@media (hover: hover) {
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--secondary-color);
+    }
+}
+
+.webkit-scrollbar-thumb.active-effect {
     background: var(--secondary-color);
 }
 
@@ -124,7 +130,13 @@ body {
     right: 2%;
 }
 
-.scrollup:hover {
+@media (hover: hover) {
+    .scrollup:hover {
+        transform: translateY(-.5rem);
+    }
+}
+
+.scrollup.active-effect {
     transform: translateY(-.5rem);
 }
 
@@ -186,7 +198,13 @@ header {
     transition: transform .4s;
 }
 
-.nav__logo:hover {
+@media (hover: hover) {
+    .nav__logo:hover {
+        transform: translateY(-2%);
+    }
+}
+
+.nav__logo.active-effect {
     transform: translateY(-2%);
 }
 
@@ -217,7 +235,13 @@ header {
     transition: transform .4s;
 }
 
-.nav__list li:hover {
+@media (hover: hover) {
+    .nav__list li:hover {
+        transform: translateY(-10%);
+    }
+}
+
+.nav__list li.active-effect {
     transform: translateY(-10%);
 }
 
@@ -233,8 +257,16 @@ header>ul>li>a {
     transition: color .4s;
 }
 
-header a:hover,
-header>ul>li>a:hover {
+@media (hover: hover) {
+
+    header a:hover,
+    header>ul>li>a:hover {
+        color: var(--primary-color);
+    }
+}
+
+header a.active-effect,
+header>ul>li>a.active-effect {
     color: var(--primary-color);
 }
 
@@ -260,7 +292,13 @@ header>ul>li>a:hover {
     font-size: 1, .1rem
 }
 
-.trocar:hover {
+@media (hover: hover) {
+    .trocar:hover {
+        transform: rotate(-90deg);
+    }
+}
+
+.trocar.active-effect {
     transform: rotate(-90deg);
 }
 
@@ -280,7 +318,13 @@ header>ul>li>a:hover {
     cursor: pointer;
 }
 
-.nav__actions i:hover {
+@media (hover: hover) {
+    .nav__actions i:hover {
+        color: var(--primary-color);
+    }
+}
+
+.nav__actions i.active-effect {
     color: var(--primary-color);
 }
 
@@ -421,7 +465,13 @@ main {
     transition: color .4s;
 }
 
-.home__social a:hover {
+@media (hover: hover) {
+    .home__social a:hover {
+        color: var(--secondary-color);
+    }
+}
+
+.home__social a.active-effect {
     color: var(--secondary-color);
 }
 
@@ -439,7 +489,13 @@ main {
     font-size: 1.4rem;
 }
 
-.home__button:hover {
+@media (hover: hover) {
+    .home__button:hover {
+        background-color: var(--secondary-color);
+    }
+}
+
+.home__button.active-effect {
     background-color: var(--secondary-color);
 }
 
@@ -635,7 +691,13 @@ main {
     transition: background-color .4s;
 }
 
-.about__contact:hover {
+@media (hover: hover) {
+    .about__contact:hover {
+        background-color: var(--secondary-color);
+    }
+}
+
+.about__contact.active-effect {
     background-color: var(--secondary-color);
 }
 
@@ -682,7 +744,13 @@ main {
     text-decoration: none;
 }
 
-.list__information li>a:hover {
+@media (hover: hover) {
+    .list__information li>a:hover {
+        color: var(--secondary-color);
+    }
+}
+
+.list__information li>a.active-effect {
     color: var(--secondary-color);
 }
 
@@ -710,7 +778,13 @@ main {
     transition: transform .4s;
 }
 
-.about__skills-img-figma:hover {
+@media (hover: hover) {
+    .about__skills-img-figma:hover {
+        transform: translateY(-.5rem);
+    }
+}
+
+.about__skills-img-figma.active-effect {
     transform: translateY(-.5rem);
 }
 
@@ -719,7 +793,13 @@ main {
     transition: transform .4s;
 }
 
-.about__skills-img-Flutter:hover {
+@media (hover: hover) {
+    .about__skills-img-Flutter:hover {
+        transform: translateY(-.5rem);
+    }
+}
+
+.about__skills-img-Flutter.active-effect {
     transform: translateY(-.5rem);
 }
 
@@ -728,11 +808,23 @@ main {
     transition: transform .4s;
 }
 
-.about__skills-img-Mysql:hover {
+@media (hover: hover) {
+    .about__skills-img-Mysql:hover {
+        transform: translateY(-.5rem);
+    }
+}
+
+.about__skills-img-Mysql.active-effect {
     transform: translateY(-.5rem);
 }
 
-.about__skills-img:hover {
+@media (hover: hover) {
+    .about__skills-img:hover {
+        transform: translateY(-.5rem);
+    }
+}
+
+.about__skills-img.active-effect {
     transform: translateY(-.5rem);
 }
 
@@ -817,11 +909,23 @@ main {
     transition: all .4s;
 }
 
-.work__toggle:hover {
+@media (hover: hover) {
+    .work__toggle:hover {
+        background-color: rgb(28, 28, 28);
+    }
+}
+
+.work__toggle.active-effect {
     background-color: rgb(28, 28, 28);
 }
 
-.work__toggle:hover .work__toggle-bg {
+@media (hover: hover) {
+    .work__toggle:hover .work__toggle-bg {
+        border-color: rgb(28, 28, 28);
+    }
+}
+
+.work__toggle.active-effect .work__toggle-bg {
     border-color: rgb(28, 28, 28);
 }
 
@@ -829,11 +933,23 @@ main {
     border-color: rgb(238, 238, 238);
 }
 
-.clear-theme .work__toggle:hover {
+@media (hover: hover) {
+    .clear-theme .work__toggle:hover {
+        background-color: rgb(227, 227, 227);
+    }
+}
+
+.clear-theme .work__toggle.active-effect {
     background-color: rgb(227, 227, 227);
 }
 
-.clear-theme .work__toggle:hover .work__toggle-bg {
+@media (hover: hover) {
+    .clear-theme .work__toggle:hover .work__toggle-bg {
+        border-color: rgb(227, 227, 227);
+    }
+}
+
+.clear-theme .work__toggle.active-effect .work__toggle-bg {
     border-color: rgb(227, 227, 227);
 }
 
@@ -929,7 +1045,13 @@ main {
     transition: background-color .4s;
 }
 
-.btn__projects:hover {
+@media (hover: hover) {
+    .btn__projects:hover {
+        background-color: var(--secondary-color);
+    }
+}
+
+.btn__projects.active-effect {
     background-color: var(--secondary-color);
 }
 
@@ -1090,7 +1212,14 @@ input:-webkit-autofill {
     cursor: pointer;
 }
 
-.form-button:hover {
+@media (hover: hover) {
+    .form-button:hover {
+        background-color: var(--secondary-color);
+        box-shadow: 0px 0px 5px 3px var(--button-shadow);
+    }
+}
+
+.form-button.active-effect {
     background-color: var(--secondary-color);
     box-shadow: 0px 0px 5px 3px var(--button-shadow);
 }
@@ -1173,7 +1302,13 @@ input:-webkit-autofill {
     transition: color .4s;
 }
 
-.footer__social-link:hover {
+@media (hover: hover) {
+    .footer__social-link:hover {
+        color: var(--body-color);
+    }
+}
+
+.footer__social-link.active-effect {
     color: var(--body-color);
 }
 
@@ -1374,7 +1509,14 @@ input:-webkit-autofill {
     transition: all .4s;
 }
 
-.voltar:hover {
+@media (hover: hover) {
+    .voltar:hover {
+        color: var(--secondary-color);
+        transform: translateY(-5%);
+    }
+}
+
+.voltar.active-effect {
     color: var(--secondary-color);
     transform: translateY(-5%);
 }
@@ -1541,7 +1683,14 @@ input:-webkit-autofill {
     transition: all .4s;
 }
 
-.view-page:hover {
+@media (hover: hover) {
+    .view-page:hover {
+        background-color: var(--secondary-color);
+        transform: scale(1.05);
+    }
+}
+
+.view-page.active-effect {
     background-color: var(--secondary-color);
     transform: scale(1.05);
 }
@@ -1568,7 +1717,13 @@ body.clear-theme {
     transition: background .4s;
 }
 
-.clear-theme::-webkit-scrollbar-thumb:hover {
+@media (hover: hover) {
+    .clear-theme::-webkit-scrollbar-thumb:hover {
+        background: var(--secondary-color);
+    }
+}
+
+.clear-theme::-webkit-scrollbar-thumb.active-effect {
     background: var(--secondary-color);
 }
 
@@ -1605,8 +1760,16 @@ header>ul>li>a .clear-theme {
     color: black;
 }
 
-.clear-theme header a:hover,
-header>ul>li>a .clear-theme:hover {
+@media (hover: hover) {
+
+    .clear-theme header a:hover,
+    header>ul>li>a .clear-theme:hover {
+        color: var(--primary-color);
+    }
+}
+
+.clear-theme header a.active-effect,
+header>ul>li>a .clear-theme.active-effect {
     color: var(--primary-color);
 }
 
@@ -1614,7 +1777,13 @@ header>ul>li>a .clear-theme:hover {
     color: black;
 }
 
-.clear-theme .nav__actions i:hover {
+@media (hover: hover) {
+    .clear-theme .nav__actions i:hover {
+        color: orange;
+    }
+}
+
+.clear-theme .nav__actions i.active-effect {
     color: orange;
 }
 
@@ -1632,12 +1801,25 @@ header>ul>li>a .clear-theme:hover {
     color: white;
 }
 
-.clear-theme .home__button:hover {
+@media (hover: hover) {
+    .clear-theme .home__button:hover {
+        background-color: rgb(234, 154, 5);
+        color: white;
+    }
+}
+
+.clear-theme .home__button.active-effect {
     background-color: rgb(234, 154, 5);
     color: white;
 }
 
-.clear-theme .home__social a:hover {
+@media (hover: hover) {
+    .clear-theme .home__social a:hover {
+        color: rgb(234, 154, 5);
+    }
+}
+
+.clear-theme .home__social a.active-effect {
     color: rgb(234, 154, 5);
 }
 
@@ -1659,7 +1841,13 @@ header>ul>li>a .clear-theme:hover {
     box-shadow: 0px 0px 30px 2px rgb(199, 199, 199);
 }
 
-.clear-theme .about__contact:hover {
+@media (hover: hover) {
+    .clear-theme .about__contact:hover {
+        background-color: rgb(234, 154, 5);
+    }
+}
+
+.clear-theme .about__contact.active-effect {
     background-color: rgb(234, 154, 5);
 }
 
@@ -1672,7 +1860,13 @@ header>ul>li>a .clear-theme:hover {
     color: rgb(255, 166, 0);
 }
 
-.clear-theme .list__information a:hover {
+@media (hover: hover) {
+    .clear-theme .list__information a:hover {
+        color: rgb(234, 154, 5);
+    }
+}
+
+.clear-theme .list__information a.active-effect {
     color: rgb(234, 154, 5);
 }
 
@@ -1691,7 +1885,13 @@ header>ul>li>a .clear-theme:hover {
     color: white;
 }
 
-.clear-theme .btn__projects:hover {
+@media (hover: hover) {
+    .clear-theme .btn__projects:hover {
+        background-color: rgb(234, 154, 5);
+    }
+}
+
+.clear-theme .btn__projects.active-effect {
     background-color: rgb(234, 154, 5);
 }
 
@@ -1721,7 +1921,14 @@ header>ul>li>a .clear-theme:hover {
     background-color: rgb(238, 238, 238);
 }
 
-.clear-theme .form-button:hover {
+@media (hover: hover) {
+    .clear-theme .form-button:hover {
+        background-color: rgb(234, 154, 5);
+        box-shadow: 0px 0px 10px 1px rgb(162, 162, 162);
+    }
+}
+
+.clear-theme .form-button.active-effect {
     background-color: rgb(234, 154, 5);
     box-shadow: 0px 0px 10px 1px rgb(162, 162, 162);
 }
@@ -1738,7 +1945,13 @@ header>ul>li>a .clear-theme:hover {
     color: black;
 }
 
-.clear-theme .voltar:hover {
+@media (hover: hover) {
+    .clear-theme .voltar:hover {
+        color: var(--primary-color);
+    }
+}
+
+.clear-theme .voltar.active-effect {
     color: var(--primary-color);
 }
 
