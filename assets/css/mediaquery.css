@@ -1352,8 +1352,6 @@ screen and (max-height: 700px) {
     }
 
     .right-tec-img {
-        position: relative;
-        left: 2.5%;
         justify-content: center;
     }
 }

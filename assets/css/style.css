@@ -1508,10 +1508,9 @@ input:-webkit-autofill {
 }
 
 .right-tec-img {
-    grid-template-columns: repeat(8, max-content);
     justify-content: baseline;
     align-items: center;
-    display: grid;
+    display: flex;
     gap: 1rem;
     width: auto;
 }
