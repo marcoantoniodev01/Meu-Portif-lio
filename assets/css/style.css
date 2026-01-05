@@ -1578,6 +1578,75 @@ input:-webkit-autofill {
 
 /* CONFIGURAÇÕES SWIPPER SPLIDEJS.COM */
 
+/* CSS PARA THUMBNAIL DE VÍDEO */
+
+.video-thumb-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-thumb-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s;
+}
+
+.play-icon-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.play-icon-overlay i {
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    transition: color 0.3s, transform 0.3s;
+}
+
+@media (hover: hover) {
+    .splide__slide:hover .video-thumb-wrapper img,
+    .splide__slide.is-active .video-thumb-wrapper img {
+        transform: scale(1.1);
+    }
+}
+
+.splide__slide.active-effect .video-thumb-wrapper img,
+.splide__slide.is-active .video-thumb-wrapper img {
+    transform: scale(1.1);
+}
+
+@media (hover: hover) {
+    .splide__slide:hover .play-icon-overlay i,
+    .splide__slide.is-active .play-icon-overlay i {
+        color: var(--primary-color);
+        /* Fica laranja (sua cor primária) */
+        transform: translate(-50%, -50%) scale(1.2);
+        /* Cresce um pouco */
+    }
+}
+
+.splide__slide.active-effect .play-icon-overlay i,
+.splide__slide.is-active .play-icon-overlay {
+    color: var(--primary-color);
+    /* Fica laranja (sua cor primária) */
+    transform: translate(-50%, -50%) scale(1.2);
+    /* Cresce um pouco */
+}
+
+/* Ajuste para o container do video principal ficar responsivo */
+.video-container-main {
+    width: 100%;
+    height: 100%;
+}
+
 #thumbnail-slider .splide__slide {
     opacity: 0.6;
     transition: 0.3s;

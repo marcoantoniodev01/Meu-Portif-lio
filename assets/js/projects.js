@@ -90,9 +90,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </iframe>`;
                 
                 // Thumb do Vídeo (ícone de play ou uma imagem placeholder)
-                liThumb.innerHTML = `<iframe allow="fullscreen" allowfullscreen height="720"
-                        src="${midia.url}" width="1280" style="border:none;">
-                    </iframe>`; 
+                const thumbvidurl = midia.url.substring(0, midia.url.lastIndexOf('.')) + '.jpg';
+
+                liThumb.innerHTML = `
+                    <div class="video-thumb-wrapper">
+                        <img src="${thumbvidurl}" alt="Video Thumbnail">
+                        <div class="play-icon-overlay">
+                            <i class="ri-play-circle-fill"></i>
+                        </div>
+                    </div>`;
             } else {
                 // Conteúdo Principal (Imagem)
                 liMain.innerHTML = `<img src="${midia.url}" alt="${projeto.titulo}">`;

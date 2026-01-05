@@ -1432,4 +1432,8 @@ screen and (max-height: 700px) {
     #main-slider .splide__arrow {
         display: none;
     }
+
+    .play-icon-overlay i {
+        font-size: 1.5rem;
+    }
 }
