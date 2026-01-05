@@ -56,50 +56,55 @@ const selectedIcon = localStorage.getItem('selected-icon')
 // Se houver tema salvo, aplica no corpo, no botão e nas imagens
 if (selectedTheme) {
   if (selectedTheme === 'dark') {
-    // Se entrou aqui, é porque o usuário salvou o tema "claro" (classe clear-theme ativa)
     document.body.classList.add(darkThemeClass)
-    themeImage.src = darkImageSrc  // Assinatura preta
-    myPhoto.src = blackSuitSrc     // Terno preto
-  } else {
-    // Tema padrão (escuro)
-    document.body.classList.remove(darkThemeClass)
-    themeImage.src = lightImageSrc // Assinatura branca
-    myPhoto.src = graySuitSrc      // Terno cinza
 
+    if (themeImage) themeImage.src = darkImageSrc
+    if (myPhoto) myPhoto.src = blackSuitSrc
+  } else {
+    document.body.classList.remove(darkThemeClass)
+
+    if (themeImage) themeImage.src = lightImageSrc
+    if (myPhoto) myPhoto.src = graySuitSrc
   }
 
-  // Ajusta o ícone do botão
-  if (selectedIcon === sunIconClass) {
-    themeButton.classList.add(sunIconClass)
-    themeButton.classList.remove(moonIconClass)
-  } else {
-    themeButton.classList.add(moonIconClass)
-    themeButton.classList.remove(sunIconClass)
+  if (themeButton) {
+    if (selectedIcon === sunIconClass) {
+      themeButton.classList.add(sunIconClass)
+      themeButton.classList.remove(moonIconClass)
+    } else {
+      themeButton.classList.add(moonIconClass)
+      themeButton.classList.remove(sunIconClass)
+    }
   }
 }
 
+
 // Ao clicar no botão, alterna o tema, ícone e as imagens
-themeButton.addEventListener('click', () => {
-  const isActive = document.body.classList.toggle(darkThemeClass)
+if (themeButton) {
+  themeButton.addEventListener('click', () => {
+    const isActive = document.body.classList.toggle(darkThemeClass)
 
-  // Troca ícone
-  if (themeButton.classList.contains(sunIconClass)) {
-    themeButton.classList.remove(sunIconClass)
-    themeButton.classList.add(moonIconClass)
-  } else {
-    themeButton.classList.remove(moonIconClass)
-    themeButton.classList.add(sunIconClass)
-  }
+    if (themeButton.classList.contains(sunIconClass)) {
+      themeButton.classList.remove(sunIconClass)
+      themeButton.classList.add(moonIconClass)
+    } else {
+      themeButton.classList.remove(moonIconClass)
+      themeButton.classList.add(sunIconClass)
+    }
 
-  // Troca imagens de acordo com o tema
-  // Se isActive for true (tema claro ativado), usa as versões pretas. Se false, versões claras.
-  themeImage.src = isActive ? darkImageSrc : lightImageSrc
-  myPhoto.src = isActive ? blackSuitSrc : graySuitSrc
+    if (themeImage) {
+      themeImage.src = isActive ? darkImageSrc : lightImageSrc
+    }
 
-  // Salva escolha
-  localStorage.setItem('selected-theme', getCurrentTheme())
-  localStorage.setItem('selected-icon', getCurrentIcon())
-})
+    if (myPhoto) {
+      myPhoto.src = isActive ? blackSuitSrc : graySuitSrc
+    }
+
+    localStorage.setItem('selected-theme', getCurrentTheme())
+    localStorage.setItem('selected-icon', getCurrentIcon())
+  })
+}
+
 
 //NAVEGAÇÃO PERSONALIZADA
 
@@ -153,12 +158,15 @@ const scrollUp = () =>{
 }
 window.addEventListener('scroll', scrollUp)
 
-document.getElementById('scroll-up').addEventListener('click', (e) => {
-  e.preventDefault(); // evita o salto instantâneo
-  window.scrollTo({
-    top: 0,
-  });
-});
+const scrollUpBtn = document.getElementById('scroll-up')
+
+if (scrollUpBtn) {
+  scrollUpBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    window.scrollTo({ top: 0 })
+  })
+}
+
 
 /*---------ANIMAÇÕES ELEMENTOS (CORREÇÃO FLICKER + BIDIRECIONAL) -------------*/
 

@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="assets/css/mediaquery.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mediaquery.css">
     <link rel="icon" type="image/png" sizes="32x32"
         href="https://i.ibb.co/tpRRRtvJ/Whats-App-Image-2025-12-27-at-21-46-06.jpg">
     <title>Marco Antônio - Projeto</title>
@@ -18,17 +18,25 @@
 
     <header class="header hidden fade-down" id="header">
         <nav class="nav__container">
-            <a href="index.html" class="nav__logo"><img src="https://i.ibb.co/cSXBbbdK/log  o-laranja.png"
-                    alt="image"></a>
+            <div class="nav__cont__logo">
+                <div class="proj-left-title">
+                    <button onclick="history.back()" class="voltar" title="Voltar">
+                        <i class="ri-arrow-left-line"></i>
+                    </button>
+                </div>
 
-            <div class="nav__menu" id="nav-menu">
+                <a href="index.html" class="nav__logo" style="position: relative;">
+                    <img src="https://i.ibb.co/cSXBbbdK/log  o-laranja.png" alt="image">
+                </a>
+            </div>
+            <div class="nav__menu" id="nav-menu" style="width: 85%;">
                 <ul class="nav__list">
                     <li class="nav__item" id="nav__item">
-                        <a href="#inicio" class="nav__link">Início</a>
+                        <a href="index.html#inicio" class="nav__link">Início</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="#about__me" class="nav__link">Sobre</a>
+                        <a href="index.html#about__me" class="nav__link">Sobre</a>
                     </li>
 
                     <li class="nav__item">
@@ -58,11 +66,156 @@
         <div class="progress-bar"></div>
     </header>
 
-    <section class="project-i"></section>
+    <section class="project-i">
 
+
+        <div class="project-content">
+            <div class="proj-cont-left">
+
+                <div class="proj-left-imgs">
+                    <div id="main-slider" class="splide hidden fade-down">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide">
+                                    <img src="https://i.ibb.co/5hPngYby/imagem-2026-01-04-150949355.png"
+                                        alt="imagem 1 do projeto">
+                                </li>
+                                <li class="splide__slide">
+                                    <img src="https://i.ibb.co/fGdT58mr/Captura-de-tela-2026-01-04-165315.png"
+                                        alt="imagem 2 do projeto">
+                                </li>
+                                <li class="splide__slide">
+                                    <iframe allow="fullscreen" allowfullscreen height="720"
+                                        src="https://res.cloudinary.com/dasht60kb/video/upload/v1767561783/Marco_Ant%C3%B4nio_-_Opera_2026-01-03_23-00-00_du9jyw.mp4"
+                                        width="1280" style="border:none;"></iframe>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="thumbnail-slider" class="splide hidden fade-up">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide">
+                                    <img src="https://i.ibb.co/5hPngYby/imagem-2026-01-04-150949355.png" alt="">
+                                </li>
+                                <li class="splide__slide">
+                                    <img src="https://i.ibb.co/fGdT58mr/Captura-de-tela-2026-01-04-165315.png" alt="">
+                                </li>
+                                <li class="splide__slide">
+                                    <iframe allow="fullscreen" allowfullscreen height="720"
+                                        src="https://res.cloudinary.com/dasht60kb/video/upload/v1767561783/Marco_Ant%C3%B4nio_-_Opera_2026-01-03_23-00-00_du9jyw.mp4"
+                                        width="1280" style="border:none;"></iframe>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="proj-cont-right">
+                <div class="proj-right-head">
+                    <div class="proj-right-title hidden zoom-in">
+                        <h3>Top Style - Descrição</h3>
+                    </div>
+
+                    <div class="proj-right-tec">
+                        <div class="right-tec-title hidden fade-down">
+                            <h4>Tecnologias Usadas:</h4>
+                        </div>
+
+                        <div class="right-tec-img hidden zoom-in">
+                            <img src="https://i.ibb.co/qYxzvKw8/html.png" alt="image" class="about__skills-img"
+                                title="Html 5">
+                            <img src="https://i.ibb.co/B5XVTXVL/css.png" alt="image" class="about__skills-img"
+                                title="Css">
+                            <img src="https://i.ibb.co/sh3bncK/javascript.jpg" alt="image" class="about__skills-img"
+                                title="JavaScript">
+                            <img src="https://i.ibb.co/7dX7QzRH/SQL.png" alt="image" class="about__skills-img"
+                                title="SQL">
+                            <img src="https://i.ibb.co/4nDz6N5k/github-white-icon.webp" alt="image"
+                                class="about__skills-img" title="Github">
+                            <img src="https://i.ibb.co/35C9YVtR/imagem-2026-01-04-193406153.png" alt="image"
+                                class="about__skills-img" title="Git">
+                            <img src="https://i.ibb.co/r2mVTxcy/figma.png" alt="image" class="about__skills-img-figma"
+                                title="Figma">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-right-description hidden fade-right">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, tempora, laboriosam maiores
+                        aliquid iure cumque ea esse debitis voluptatibus, nemo corporis voluptatem repellendus amet
+                        illum nostrum quidem fuga sint delectus! Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Veritatis placeat doloribus consectetur voluptatum, inventore deleniti rerum nihil itaque
+                        repudiandae iure quidem facilis delectus accusamus illum error. Laudantium inventore ut tenetur.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex aliquam laborum dolor ipsam velit
+                        ducimus, dignissimos sed necessitatibus tempore aspernatur quam ad repudiandae, vitae sint,
+                        ullam deserunt quaerat! Officia, quae?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Dolore, tempora, laboriosam maiores
+                        aliquid iure cumque ea esse debitis voluptatibus, nemo corporis voluptatem repellendus amet
+                        illum nostrum quidem fuga sint delectus! Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Veritatis placeat doloribus consectetur voluptatum, inventore deleniti rerum nihil itaque
+                        repudiandae iure quidem facilis delectus accusamus illum error. Laudantium inventore ut tenetur.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex aliquam laborum dolor ipsam velit
+                        ducimus, dignissimos sed necessitatibus tempore aspernatur quam ad repudiandae, vitae sint,
+                        ullam deserunt quaerat! Officia, quae?
+                    </p>
+                </div>
+
+                <div class="proj-right-view-page hidden zoom-in">
+                    <a class="view-page" href="https://topstyle.vercel.app" target="_blank">Acessar site <i
+                            class="ri-arrow-right-up-box-line"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
+
+    <footer class="footer">
+        <div class="footer__box">
+            <div class="footer__content">
+                <div class="footer__inf">
+                    <h2 class="hidden fade-down">MARCO ANTÔNIO</h2>
+                    <p class="hidden fade-down">Desenvolvedor apaixonado por tecnologia, criativo e focado em soluções
+                        eficientes. Sempre em
+                        busca de novos desafios para evoluir.</p>
+                </div>
+
+                <div class="footer__social">
+                    <h2 class="hidden fade-down">Social</h2>
+                    <div class="redes hidden fade-down">
+                        <a href="https://www.linkedin.com/in/marco-antônio-bezerra-cardoso-filho-4004a7377"
+                            target="_blank" class="footer__social-link">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="https://github.com/marcoantoniodev01" target="_blank" class="footer__social-link">
+                            <i class="ri-github-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/marco.a.071" target="_blank" class="footer__social-link">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="footer__hr hidden zoom-in">
+
+            <span class="footer__copy hidden fade-up">
+                &#169; Copyright 2025. Made by <a href="index.html">Marco Antônio</a>
+            </span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="assets/js/swipper.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/index.js"></script>
-    <script src="assets/js/animacoes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.bundle.min.js"></script>
+    <script src="assets/js/particulas.js"></script>
 
     <div id="toast-container" class="toast-container"></div>
 
