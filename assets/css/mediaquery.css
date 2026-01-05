@@ -46,7 +46,7 @@
         position: fixed;
         top: -100%;
         left: 0;
-        width: 100%;
+        width: 100% !important;
         height: auto;
         display: flex;
         flex-direction: column;
