@@ -579,6 +579,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: baseline;
+    align-items: center;
     height: 110vh;
     background-color: rgb(17, 17, 17);
     transition: background-color .4s;
@@ -629,9 +630,9 @@ main {
 .about__home {
     position: relative;
     display: flex;
-    width: 99.19vw;
+    width: 80%;
     height: auto;
-    justify-content: space-around;
+    justify-content: space-between;
     border-radius: 5px;
     bottom: 1rem;
 }
@@ -725,7 +726,7 @@ main {
     display: flex;
     flex-direction: column;
     list-style-type: none;
-    width: 500px;
+    width: auto;
     row-gap: 10px;
 }
 
